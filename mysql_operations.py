@@ -42,3 +42,30 @@ def connect():
         print(error)
 
     return conn
+
+
+def proceed_row(id, tweet, label, priority):
+    print(priority)
+
+def get_max_prior(conn):
+    cursor = conn.cursor()
+    cursor.execute("SELECT MAX(priority) FROM tweets")
+    return cursor.fetchone()
+
+def get_count_by_priority(conn, priority):
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM tweets WHERE priority="+str(priority))
+    return cursor.fetchone()
+
+def to_db_from_file(conn):
+    try:
+        f = open('../quotes.txt', 'r')
+        for line in f:
+            print line
+            insert_tweet(conn, line, "favs")
+
+    except Error as e:
+        print(e)
+
+    finally:
+        f.close()
