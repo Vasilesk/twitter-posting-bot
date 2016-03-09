@@ -3,6 +3,8 @@ from mysql_operations import connect, get_max_prior, get_count_by_priority, set_
 
 import random
 
+from twitter_api_operations import tweepy_api_create
+
 def test_mysql():
     try:
         conn = connect()
@@ -43,6 +45,9 @@ def test_mysql():
 def test_twi_api():
     try:
         print "Hi"
+        api = tweepy_api_create()
+
+        api.update_status("Status with tweepy!")
 
     except Error as e:
         print(e)
