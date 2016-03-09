@@ -41,19 +41,23 @@ def connect():
 
     return conn
 
-
-def proceed_row(id, tweet, label, priority):
-    print(priority)
-
 def get_max_prior(conn):
     cursor = conn.cursor()
     cursor.execute("SELECT MAX(priority) FROM tweets")
-    return cursor.fetchone()
+    return cursor.fetchone()[0]
 
 def get_count_by_priority(conn, priority):
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM tweets WHERE priority="+str(priority))
-    return cursor.fetchone()
+    return cursor.fetchone()[0]
+
+def set_priority(conn, id, priority):
+    cursor = conn.cursor()
+
+    query = "UPDATE tweets SET priority = %s WHERE id = %s"
+    data = (priority, id)
+
+    cursor.execute(query, data)
 
 def to_db_from_file(conn):
     try:
