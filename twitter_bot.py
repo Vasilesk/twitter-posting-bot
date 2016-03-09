@@ -3,7 +3,7 @@ from mysql_operations import connect, get_max_prior, get_count_by_priority, set_
 
 import random
 
-def query_with_fetchone():
+def test_mysql():
     try:
         conn = connect()
         cursor = conn.cursor()
@@ -40,5 +40,11 @@ def query_with_fetchone():
         cursor.close()
         conn.close()
 
+def test_twi_api():
+    try:
+        print "Hi"
 
-query_with_fetchone()
+    except Error as e:
+        print(e)
+
+test_twi_api()

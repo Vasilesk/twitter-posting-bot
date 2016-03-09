@@ -59,10 +59,9 @@ def set_priority(conn, id, priority):
 
     cursor.execute(query, data)
 
-# function for inserting tweets from file into db 
 def to_db_from_file(conn):
     try:
-        f = open('quotes.txt', 'r')
+        f = open('../quotes.txt', 'r')
         for line in f:
             print line
             insert_tweet(conn, line, "favs")
