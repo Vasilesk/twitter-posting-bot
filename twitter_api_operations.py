@@ -32,3 +32,6 @@ def tweepy_api_create():
         print(error)
 
     return api
+
+def get_favs(api):
+    print "not yet"

@@ -58,6 +58,7 @@ def set_priority(conn, id, priority):
 
     cursor.execute(query, data)
     conn.commit()
+    
 
 # function for inserting tweets from file into db
 def to_db_from_file(conn):
